@@ -22,7 +22,6 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 icon_path = os.path.join("Assets", "game_icon.png")
 game_icon = pygame.image.load(icon_path)
 pygame.display.set_icon(game_icon)
-pygame.display.set_caption("Car Racing Game - by Nathan Yew")
 
 # colours
 grey = (166, 166, 166)
@@ -200,6 +199,9 @@ class Game:
 
 # Main loop function
 def main():
+    
+    pygame.display.set_caption("Car Racing Game - by Nathan Yew")
+
     game = Game()
     player = game.player_car
     speed = game.speed
