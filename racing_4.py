@@ -74,7 +74,7 @@ class Car:
         self.player = True
         self.width = 75
         self.height = 150
-        self.x_pos = 345
+        self.x_pos = (SCREEN_WIDTH / 2) - (self.width / 2)
         self.y_pos = 375
         self.set_texture()
         self.show()
@@ -199,7 +199,7 @@ class Game:
 
 # Main loop function
 def main():
-    
+
     pygame.display.set_caption("Car Racing Game - by Nathan Yew")
 
     game = Game()
@@ -264,6 +264,7 @@ def main():
                 if event.key == pygame.K_r:
                     game.restart_game()
                     player = game.player_car
+                    direction = None
                     loops = 0
                 if event.key == pygame.K_q:
                     pygame.quit()
