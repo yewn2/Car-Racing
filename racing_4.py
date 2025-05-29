@@ -272,4 +272,5 @@ def main():
 
 
 # main routine
-main()
+if __name__ == "__main":
+    main()
