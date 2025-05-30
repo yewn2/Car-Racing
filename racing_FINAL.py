@@ -107,7 +107,7 @@ class Car:
     def move(self, speed, direction):
         if direction is not None:
             self.dx, self.dy = (speed * math.cos(math.radians(direction)) * 1.5,
-                                -speed * math.sin(math.radians(direction)) *1.5)
+                                -speed * math.sin(math.radians(direction)) * 1.5)
         self.x_pos += self.dx
         self.y_pos += self.dy
         self.rect.x = self.x_pos
