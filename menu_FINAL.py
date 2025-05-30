@@ -295,7 +295,7 @@ def menu_setup():
     instructions = pygame.transform.scale(instructions, (800, 600))
     screen.blit(instructions, (0, 0))
     pygame.display.update()
-    pygame.time.wait(3500)
+    pygame.time.wait(3500d)
 
     menu = Start()
     music_path = os.path.join("Assets", "music.flac")
