@@ -32,6 +32,11 @@ msg_font_path = os.path.join("assets", "Press_Start_2P", "PressStart2P-Regular.t
 msg_font = pygame.font.SysFont(score_font_path, 75)
 exit_font = pygame.font.SysFont("freesansbold.ttf", 100, bold=True)
 
+# music
+music_path = os.path.join("Assets", "music.flac")
+pygame.mixer.music.load(music_path)
+pygame.mixer.music.play(-1)
+
 
 def car_racing_game():
     menu.menu_setup()
