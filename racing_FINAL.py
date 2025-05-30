@@ -106,8 +106,8 @@ class Car:
 
     def move(self, speed, direction):
         if direction is not None:
-            self.dx, self.dy = (speed * math.cos(math.radians(direction)),
-                                -speed * math.sin(math.radians(direction)))
+            self.dx, self.dy = (speed * math.cos(math.radians(direction)) * 1.5,
+                                -speed * math.sin(math.radians(direction)) *1.5)
         self.x_pos += self.dx
         self.y_pos += self.dy
         self.rect.x = self.x_pos
@@ -147,7 +147,7 @@ class Traffic:
 
     def move(self, speed, multiplier):
         self.dy = ((-speed * math.sin(math.radians(270))) +
-                   (random.randint((-speed * 2 / 3), (speed * 2)))) * multiplier
+                   (random.uniform((-speed * 2 / 3), (speed * 2)))) * multiplier
         self.y_pos += self.dy
         self.rect.y = self.y_pos
 
@@ -230,7 +230,8 @@ class Game:
         self.end_text()
 
     def car_spawn(self, loops, multiplier):
-        spawn = (loops - self.last_spawned) > ((self.speed * 30) * (1 / multiplier))
+        spawn = (loops - self.last_spawned) > random.uniform((75 * (1 / multiplier)),
+                                                             (125 * (1 / multiplier)))
         if spawn:
             self.last_spawned = loops
         return spawn
@@ -257,6 +258,12 @@ class Game:
                                         SCREEN_HEIGHT // 4 + self.small_text_2.get_height() * 2))
         self.playing = False
 
+    def update_speed(self):
+        if self.score.current_score < 5:
+            self.speed = 3
+        else:
+            self.speed = 3 + (self.score.current_score * 0.05)
+
     def restart_game(self):
         self.__init__(self.player_car.texture_num, self.traffic_speed, self.difficulty)
 
@@ -268,7 +275,6 @@ def racing_game(colour, traffic_speed, difficulty):
 
     game = Game(colour, traffic_speed, difficulty)
     player = game.player_car
-    speed = game.speed
     direction = None
 
     clock = pygame.time.Clock()
@@ -280,6 +286,8 @@ def racing_game(colour, traffic_speed, difficulty):
         if game.playing:
 
             loops += 1
+            game.update_speed()
+            speed = game.speed
 
             # Showing background
             for bg in game.bg:
