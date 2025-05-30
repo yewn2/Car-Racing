@@ -289,6 +289,14 @@ class Credits:
 
 def menu_setup():
 
+    pygame.display.set_caption("-- Instructions --")
+    instructions_path = os.path.join("Assets", "menu", "instructions.png")
+    instructions = pygame.image.load(instructions_path)
+    instructions = pygame.transform.scale(instructions, (800, 600))
+    screen.blit(instructions, (0, 0))
+    pygame.display.update()
+    pygame.time.wait(3500)
+
     menu = Start()
     music_path = os.path.join("Assets", "music.flac")
     pygame.mixer.music.load(music_path)
