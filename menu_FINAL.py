@@ -96,7 +96,6 @@ class Start:
         self.quit_button = Button("quit_button", 425, 475, 350, 105)
         self.screen_options = Options()
 
-
     def start(self):
         speed_mult = 0
         if self.screen_options.speed == "slow":
